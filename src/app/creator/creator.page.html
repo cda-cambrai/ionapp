@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Les créateurs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let creator of creators">
+      <ion-avatar slot="start">
+        <img [src]="'assets/creator/' + creator.avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ creator.name }}</h2>
+        <p>{{ creator.job }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
