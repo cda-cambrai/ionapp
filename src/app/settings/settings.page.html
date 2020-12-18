@@ -36,10 +36,15 @@
       </ion-item>
     </ion-list>
 
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit">
+    <div class="ion-padding ion-text-center">
+      <ion-button expand="block" type="submit" [disabled]="saving">
         Enregistrer
+        <ion-spinner name="dots" *ngIf="saving" class="ion-margin-start"></ion-spinner>
       </ion-button>
+
+      <ion-text *ngIf="success" color="success">
+        Vos réglages ont été enregistrés.
+      </ion-text>
     </div>
   </form>
 
