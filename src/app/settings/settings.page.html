@@ -14,16 +14,16 @@
        - Toggle pour le darkmode (ion-toggle)
        - Petit button (ion-button)
   -->
-  <form>
+  <form (ngSubmit)="save()">
     <ion-list lines="full">
       <ion-item>
         <ion-label position="floating">Pseudo</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="settings.username" name="username"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Ma ville</ion-label>
-        <ion-select interface="action-sheet" placeholder="Choisir" cancelText="Fermer">
+        <ion-select [(ngModel)]="settings.city" name="city" interface="action-sheet" placeholder="Choisir" cancelText="Fermer">
           <ion-select-option value="Hulluch">Hulluch</ion-select-option>
           <ion-select-option value="Lille">Lille</ion-select-option>
           <ion-select-option value="Paris">Paris</ion-select-option>
@@ -32,14 +32,19 @@
 
       <ion-item>
         <ion-label>Toggle Dark Mode</ion-label>
-        <ion-toggle (ionChange)="toggleDarkMode()"></ion-toggle>
+        <ion-toggle (ionChange)="toggleDarkMode()" [(ngModel)]="settings.darkMode" name="darkMode"></ion-toggle>
       </ion-item>
     </ion-list>
 
     <div class="ion-padding">
-      <ion-button expand="block">
+      <ion-button expand="block" type="submit">
         Enregistrer
       </ion-button>
     </div>
+
+    <!-- Ajouter un bouton permettant de vider le storage du téléphone -->
+    <!-- Le bouton aura un événement click (sans type submit) -->
+    <!-- Le click appellera une méthode delete qui utilise le service storage -->
+    <!-- Il faudra aussi modifier le settings pour vider les champs -->
   </form>
 </ion-content>
