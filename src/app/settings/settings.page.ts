@@ -12,4 +12,11 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
+  // Active ou non le dark mode sur l'application
+  toggleDarkMode() {
+    console.log('dark mode');
+    // On ajoute ou on supprime la classe dark de body
+    document.body.classList.toggle('dark');
+  }
+
 }
