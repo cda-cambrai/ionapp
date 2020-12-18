@@ -37,4 +37,15 @@ export class SettingsPage implements OnInit {
     this.storage.set('settings', this.settings);
   }
 
+  // Suppression des données sur le téléphone
+  removeData() {
+    this.storage.remove('settings');
+    // On doit faire un reset de l'objet settings
+    this.settings = {
+      username: '',
+      city: '',
+      darkMode: false,
+    };
+  }
+
 }

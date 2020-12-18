@@ -41,10 +41,16 @@
         Enregistrer
       </ion-button>
     </div>
-
-    <!-- Ajouter un bouton permettant de vider le storage du téléphone -->
-    <!-- Le bouton aura un événement click (sans type submit) -->
-    <!-- Le click appellera une méthode delete qui utilise le service storage -->
-    <!-- Il faudra aussi modifier le settings pour vider les champs -->
   </form>
+
+  <!-- Ajouter un bouton permettant de vider le storage du téléphone -->
+  <!-- Le bouton aura un événement click (sans type submit) -->
+  <!-- Le click appellera une méthode delete qui utilise le service storage -->
+  <!-- Il faudra aussi modifier le settings pour vider les champs -->
+  <div class="ion-padding">
+    <ion-button color="danger" expand="block" (click)="removeData()">
+      Supprimer mes données
+    </ion-button>
+  </div>
+
 </ion-content>
