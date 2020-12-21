@@ -3,10 +3,31 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>user-detail</ion-title>
+    <ion-title>{{ user.name.first }} {{ user.name.last }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-avatar>
+      <img [src]="user.picture.large" />
+    </ion-avatar>
 
+    <ion-card-header>
+      <ion-card-subtitle>{{ user.location.country }}</ion-card-subtitle>
+      <ion-card-title>{{ user.name.first }} {{ user.name.last }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!--
+        Ce pipe (| json) nous permet de voir le contenu de l'objet
+        {{ user | json }} -->
+      <p>Ville: {{ user.location.city }}</p>
+      <p>Code postal: {{ user.location.postcode }}</p>
+      <p>Rue: {{ user.location.street.name }}</p>
+      <p>Âge: {{ user.dob.age }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Téléphone: {{ user.phone }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

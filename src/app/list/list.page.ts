@@ -31,7 +31,7 @@ export class ListPage implements OnInit {
 
   // Permet d'ouvrir la page utilisateur
   openUser(user) {
-    console.log(user);
+    // console.log(user);
 
     // J'ouvre une nouvelle fenêtre sur la route user-detail
     // En 2ème paramètre, on passe le user dont on veut voir les informations
