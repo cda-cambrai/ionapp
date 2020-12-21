@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let user of users">
+    <ion-item *ngFor="let user of users" button (click)="openUser(user)">
       <ion-avatar slot="start">
         <img [src]="user.picture.medium" />
       </ion-avatar>
