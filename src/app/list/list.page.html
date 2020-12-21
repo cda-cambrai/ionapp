@@ -19,4 +19,18 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- Trouver un moyen d'afficher un chargement "skeleton" en vous
+       aidant de la documentation Ionic -->
+  <ion-list *ngIf="users.length === 0">
+    <ion-item *ngFor="let skeleton of skeletons">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h2><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></h2>
+        <p><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
