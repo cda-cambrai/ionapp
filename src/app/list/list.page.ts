@@ -10,6 +10,8 @@ import { UserService } from '../services/user.service';
 export class ListPage implements OnInit {
   users = [];
   skeletons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // On utilisera this.page pour se situer dans la pagination
+  page = 1;
 
   constructor(
     private userService: UserService,
@@ -26,7 +28,7 @@ export class ListPage implements OnInit {
   ionViewWillEnter() {
     this.users = []; // On remet à 0 la liste à chaque fois qu'on vient sur la page
 
-    this.userService.getUsers().then(users => {
+    this.userService.getUsers(this.page).then(users => {
       console.log('test');
       // Le setTimeout va nous permettre de tester le skeleton
       setTimeout(() => this.users = users['results'], 2000);
@@ -40,6 +42,20 @@ export class ListPage implements OnInit {
     // J'ouvre une nouvelle fenêtre sur la route user-detail
     // En 2ème paramètre, on passe le user dont on veut voir les informations
     this.router.navigate(['/user-detail'], {state: { keyUser: user }});
+  }
+
+  // Permet de charger les utilisateurs suivants lors du scroll infini
+  loadData(event) {
+    console.log(event);
+    // Appel du service sur la prochaine page
+    this.page++; // page 2 si on est sur la page 1 etc...
+    this.userService.getUsers(this.page).then(users => {
+      // On doit ajouter les utilisateurs récupérés (users) dans le tableau existant (this.users)
+      // On doit donc avoir 40 utilisateurs dans this.users (concat...)
+      // On doit appeller la méthode complete() du ion infinite pour "arrêter" le chargement
+      // Idéalement, on s'arrête quand on a 100 utilisateurs (voir le disabled du ion infinite)
+      console.log(users);
+    });
   }
 
 }
