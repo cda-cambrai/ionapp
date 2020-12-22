@@ -52,9 +52,14 @@ export class ListPage implements OnInit {
     this.userService.getUsers(this.page).then(users => {
       // On doit ajouter les utilisateurs récupérés (users) dans le tableau existant (this.users)
       // On doit donc avoir 40 utilisateurs dans this.users (concat...)
+      this.users = this.users.concat(users['results']);
       // On doit appeller la méthode complete() du ion infinite pour "arrêter" le chargement
-      // Idéalement, on s'arrête quand on a 100 utilisateurs (voir le disabled du ion infinite)
-      console.log(users);
+      event.target.complete();
+      // Idéalement, on s'arrête quand on a 100 utilisateurs (voir le disabled du ion infinite
+      if (this.page === 5) {
+        event.target.disabled = true;
+      }
+      console.log(this.users);
     });
   }
 
