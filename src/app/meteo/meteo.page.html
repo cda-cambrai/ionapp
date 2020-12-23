@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Meteo à {{ settings.city }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="meteo.current_condition">
+    <ion-row>
+      <ion-col size="6" offset="3" class="ion-text-center">
+        <h2>{{ settings.city }}</h2>
+        <div>
+          <img
+            [src]="meteo.current_condition.icon_big"
+            [alt]="settings.city">
+        </div>
+        <!-- .? permet d'éviter de faire le ngIf, on vérifie si
+             meteo.current_condition existe -->
+        <h3>{{ meteo.current_condition?.condition }}</h3>
+        <h4>{{ meteo.current_condition?.tmp }} &deg;C</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <h2><strong>Pression</strong>: {{ meteo.current_condition?.pressure }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2><strong>Humidité: </strong> {{ meteo.current_condition?.humidity }} %</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2><strong>Lever du soleil: </strong> {{ meteo.city_info?.sunrise }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2><strong>Coucher du soleil: </strong> {{ meteo.city_info?.sunset }}</h2>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2><strong>Coordonnées: </strong> {{ meteo.city_info?.latitude }}, {{ meteo.city_info?.longitude }}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

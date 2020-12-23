@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'user-detail',
     loadChildren: () => import('./user-detail/user-detail.module').then( m => m.UserDetailPageModule)
+  },
+  {
+    path: 'meteo',
+    loadChildren: () => import('./meteo/meteo.module').then( m => m.MeteoPageModule)
   }
 ];
 
