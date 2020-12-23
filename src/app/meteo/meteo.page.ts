@@ -31,7 +31,10 @@ export class MeteoPage implements OnInit {
       }
 
       // Ok, on a la ville, on peut aller chercher sa météo...
-      this.meteoService.getMeteo(this.settings.city).then(meteo => this.meteo = meteo);
+      this.meteoService.getMeteo(this.settings.city).then(meteo => {
+        console.log(meteo);
+        this.meteo = meteo;
+      });
     });
   }
 
