@@ -17,6 +17,36 @@ Pour les autres fois :
 git pull
 ```
 
+Pour la compilation :
+
+- On compile le code Angular/Ionic :
+
+```
+ionic build --prod
+```
+
+- On envoie code dans l'application Android :
+
+```
+npx cap sync
+```
+
+- On ouvre Android Studio pour compiler l'application Android :
+
+```
+npx cap open android
+```
+
+## Soucis avec Cordova
+
+Attention, avec Cordova, il faut remplacer la ligne :
+
+```android.support.v4.content.FileProvider``` par ```androidx.core.content.FileProvider```
+
+Idéalement, on pourrait tester le plugin cordova https://github.com/apache/cordova-plugin-camera/pull/688
+
+On pourrait également utiliser Capacitor https://capacitorjs.com/docs/apis/camera
+
 ## Exercice WE 18/12
 
 On va créer une page afin de présenter une liste d'utilisateur :
